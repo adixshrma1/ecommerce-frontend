@@ -1,9 +1,11 @@
-import React from 'react'
-import { CiWarning } from 'react-icons/ci'
+import Products from "./components/Products"
+
 
 const App = () => {
   return (
-    <div className='text-lg bg-yellow-500'>this is a font example <CiWarning /></div>
+    <div>
+      <Products />
+    </div>
   )
 }
 
