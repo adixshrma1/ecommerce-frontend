@@ -25,9 +25,6 @@ export default function ProductViewModal({
     discount,
     specialPrice,
   } = product;
-  // const handleClickOpen = () =>{
-  //     setIsOpen(true);
-  // }
 
   return (
     <>
