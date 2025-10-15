@@ -3,36 +3,40 @@ import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchProducts } from "../store/actions/index.js";
+import Filter from "./Filter.jsx";
 
 const Products = () => {
-  
-    const { isLoading, errorMessage } = useSelector(state => state.errors)
+  const { isLoading, errorMessage } = useSelector((state) => state.errors);
 
-    const { products } = useSelector(state => state.products);
-    const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.products);
+  const dispatch = useDispatch();
 
-    useEffect(()=>{
-      dispatch(fetchProducts());
-    }, [dispatch])  
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   return (
     <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
-        {isLoading ? (
-            <p>It is loading...</p>
-        ) : errorMessage ? (
-            <div className="flex items-center justify-center h-[200px]">
-                <FaExclamationTriangle className="text-slate-800 text-lg font-medium" />
-                <span className="text-slate-800 text-lg font-medium">
-                    {errorMessage}
-                </span>
-            </div>
-        ) : (
-            <div className="min-h-[700px]">
-                <div className="pb-6 pt-14 grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-                    {products && products.map((item, index) => <ProductCard key={index} {...item}/>)}    
-                </div>
-            </div>
-        )}
+      <Filter />
+      {isLoading ? (
+        <p>It is loading...</p>
+      ) : errorMessage ? (
+        <div className="flex items-center justify-center h-[200px]">
+          <FaExclamationTriangle className="text-slate-800 text-lg font-medium" />
+          <span className="text-slate-800 text-lg font-medium">
+            {errorMessage}
+          </span>
+        </div>
+      ) : (
+        <div className="min-h-[700px]">
+          <div className="pb-6 pt-14 grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-6">
+            {products &&
+              products.map((item, index) => (
+                <ProductCard key={index} {...item} />
+              ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
