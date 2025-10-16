@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import Filter from "./Filter.jsx";
 import useProductFilter from "../hooks/useProductFilter.jsx";
 import { fetchCategories } from "../store/actions/index.js";
+import { RotatingLines } from "react-loader-spinner";
+import Loader from "./Loader.jsx";
 
 const Products = () => {
   const { isLoading, errorMessage } = useSelector((state) => state.errors);
@@ -21,8 +23,8 @@ const Products = () => {
   return (
     <div className="lg:px-14 sm:px-8 px-4 py-14 2xl:w-[90%] 2xl:mx-auto">
       <Filter categories={categories ? categories : []} />
-      {isLoading ? (
-        <p>It is loading...</p>
+      {true ? (
+        <Loader />
       ) : errorMessage ? (
         <div className="flex items-center justify-center h-[200px]">
           <FaExclamationTriangle className="text-slate-800 text-lg font-medium" />
