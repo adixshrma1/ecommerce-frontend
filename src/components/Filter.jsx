@@ -10,12 +10,7 @@ import {
 } from "@mui/material";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-const Filter = () => {
-  const categories = [
-    { categoryId: 1, categoryName: "Electronics" },
-    { categoryId: 2, categoryName: "clothing" },
-    { categoryId: 3, categoryName: "Furniture" },
-  ];
+const Filter = ({ categories }) => {
 
   const [searchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
