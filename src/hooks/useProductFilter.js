@@ -30,9 +30,6 @@ const useProductFilter = () => {
 
         dispatch(fetchProducts(queryString));
     }, [dispatch, searchParams])
-  return (
-    <div>useProductFilter</div>
-  )
 }
 
 export default useProductFilter
