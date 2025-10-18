@@ -38,12 +38,12 @@ const ProductCard = ({
             specialPrice,
           });
         }}
-        className="w-full overflow-hidden aspect-[3/2]"
+        className="w-full overflow-hidden aspect-[3/2] flex justify-center"
       >
         <img
           src={image}
           alt={productName}
-          className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105"
+          className="w-auto h-full cursor-pointer transition-transform duration-300 transform hover:scale-105"
         />
       </div>
       <div className="p-4">
