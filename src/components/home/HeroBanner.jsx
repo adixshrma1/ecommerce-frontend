@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 const colors = ["#FDC200", "#ff2c2c", "#21ad61", "723da6"];
 
 const HeroBanner = () => {
-  console.log(bannerList[0].title);
   return (
     <div className="py-2 rounded-md">
       <Swiper
