@@ -2,6 +2,9 @@ import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import ProductViewModal from "./ProductViewModal";
 import truncateText from "../../utils/truncateText";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../store/actions";
+import toast from "react-hot-toast";
 
 const ProductCard = ({
   productId,
@@ -19,11 +22,17 @@ const ProductCard = ({
   const [selectedProduct, setSelectedProduct] = useState("");
   const isAvailable = quantity && Number(quantity) > 0;
 
+  const dispatch = useDispatch();
+
   const handleProductView = (product) => {
     if (!about) {
       setSelectedProduct(product);
       setIsModalOpen(true);
     }
+  };
+
+  const handleAddToCart = (cartItems) => {
+    dispatch(addToCart(cartItems, 1, toast));
   };
 
   return (
@@ -93,7 +102,18 @@ const ProductCard = ({
 
             <button
               disabled={!isAvailable || btnLoader}
-              onClick={() => {}}
+              onClick={() =>
+                handleAddToCart({
+                  productId,
+                  productName,
+                  image,
+                  description,
+                  quantity,
+                  price,
+                  discount,
+                  specialPrice,
+                })
+              }
               className={`bg-blue-500 ${
                 isAvailable ? "opacity-100 hover:bg-blue-600" : "opacity-70"
               }
