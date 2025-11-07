@@ -8,6 +8,8 @@ import {
   increaseCartQuantity,
   removeFromCart,
 } from "../../store/actions";
+import { formatPrice } from "../../utils/formatPrice";
+import truncateText from "../../utils/truncateText";
 
 const ItemContent = ({
   productId,
@@ -50,7 +52,7 @@ const ItemContent = ({
         <div className="md:col-span-2 justify-self-start flex flex-col gap-2">
           <div className="flex md:flex-row flex-col lg:gap-4 sm:gap-3 gap-0 items-start">
             <h3 className="lg:text-base text-sm font-semibold text-slate-600">
-              {productName}
+              {truncateText(productName)}
             </h3>
           </div>
 
@@ -78,7 +80,7 @@ const ItemContent = ({
         </div>
 
         <div className="justify-self-center lg:text-base text-sm text-slate-600 font-semibold">
-          ${specialPrice}
+          {formatPrice(Number(specialPrice))}
         </div>
 
         <div className="justify-self-center">
@@ -113,7 +115,7 @@ const ItemContent = ({
         </div>
 
         <div className="justify-self-center lg:text-base text-sm text-slate-600 font-semibold">
-          ${Number(currQuantity) * Number(specialPrice)}
+          {formatPrice(Number(currQuantity) * Number(specialPrice))}
         </div>
       </div>
     </>
